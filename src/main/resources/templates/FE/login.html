@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0" >
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon" th:href="@{FE/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{FE/css/login.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+	integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{FE/fontawesome/css/all.css}" />
+</head>
+<body id="bodydiv">
+<div id="app">
+<p id="demo"></p>
+	<div align="center" style="margin: 30px" class="text-white logo-ip12prm">
+		<h1 class="logo-text" style="font-family: Impact, fantasy"><i class="fas fa-heart"></i> F-Love </h1>
+		<h1 class="logo-text">
+			Open your heart
+		</h1>
+	</div>
+	<section class="text-center" style="width: 500px">
+		<div class="card mx-4 mx-md-5 shadow-5-strong justify-content-center ip12prm"
+			style="margin-top: 100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px);">
+			<div th:if="${success}" class="notification-success">
+				<h5 th:text="${success}"></h5>
+			</div>
+			<div th:if="${error}" class="notification-error">
+				<h5 th:text="${error}"></h5>
+			</div>
+			<div class="card-body py-2 px-md-2">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-8">
+						<h2 class="fw-bold mb-5" style="font-family: Bradley Hand, cursive"></h2>
+						<form @submit="checkForm" class="form-lr" action="/loginUser" method="post">
+							<!-- Email input -->
+							<div class="form-outline mb-4 text-left">
+								<label class="form-label" for="form3Example3" style="color: #B48FD9">Email
+									address</label>
+								<input type="text" id="email" name="email" v-model="email" class="form-control"/>
+								<p class="error-input">{{ emailErrorInput }}</p>
+							</div>
+
+							<!-- Password input -->
+							<div class="form-outline mb-4 text-left">
+								<label class="form-label text-left" for="form3Example4" style="color: #B48FD9">Password</label>
+								<input type="password" id="password" name="password" v-model="password"  class="form-control"/>
+								<p class="error-input">{{ passwordErrorInput }}</p>
+							</div>
+							<!-- Submit button -->
+							<button type="submit" class="raise button btn text-white btn-block mb-4">login</button>
+
+							<!-- Register buttons -->
+							<div class="text-center">
+								<p style="color: #B48FD9">or</p>
+								<a th:href="@{/register}" type="button" class="raise btn btn-link btn-floating mx-1">register</a> 
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script th:src="@{FE/js/login.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dating App</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+	<div align="center">
+		<a class="h1" th:href="@{/users}">User Management</a>
+		<form th:action="@{/users/save}" method="POST" th:object="${user}" style="max-width: 600px">
+			<div class="border border-danger rounded p-3" style="margin-top: 20px">
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">Email: </label>
+					<input type="email" th:field="*{email}" class="form-controll col-sm-8" required="required" />
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">PassWord: </label>
+					<input type="password" th:field="*{password}" class="form-controll col-sm-8" required="required" minlength="6" />
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">Phone Number: </label>
+					<input type="text" th:field="*{phoneNumber}" class="form-controll col-sm-8" required="required" minlength="10" maxlength="11"/>
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">Age: </label>
+					<input type="number" th:field="*{age}" class="form-controll col-sm-8" required="required"  />
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">First Name: </label>
+					<input type="text" th:field="*{firstName}" class="form-controll col-sm-8" required="required" />
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">Last Name: </label>
+					<input type="text" th:field="*{lastName}" class="form-controll col-sm-8" required="required" />
+				</div>
+				<div class="form-grouup row" style="margin: 15px">
+					<label class="col-sm-4 col-form-label">Blocked: </label>
+					<input type="checkbox" th:field="*{is_blocked}" class="form-controll col-sm-8" />
+				</div>
+				<div class="text-center" style="margin: 25px">
+					<button type="submit" class="btn btn-primary" >Create user</button>
+					<a th:href="@{/users}" class="btn btn-secondary" >Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

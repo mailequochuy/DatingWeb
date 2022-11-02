@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+    content="width=device-width, initial-scale=1.0">
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon" th:href="@{../../users/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{../../users/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{../../admin/profile.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{../../users/css/finding.css}" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{../../users/fontawesome/css/all.css}" />
+</head>
+<body id="body-home">
+    <script th:inline="javascript">
+        var user = [[${ user }]];
+        var friend = [[${ friend }]];
+    </script>
+    <div id="profile">
+        <nav class="navbar navbar-light bg-light border-navmr-1  col-12 pr-0">
+        <!-- Container wrapper -->
+        <div class="container-fluid row ">
+            <!-- Toggle button -->
+
+            <!-- Collapsible wrapper -->
+            <div class="row col-8 col-sm-6 col-md-8" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+
+                <div class="text-logo">
+                    <h1 class="text-logo">
+                        <a class="atag" th:href="@{/home}"><i class="fas fa-heart"></i>F-Love </a>
+                    </h1>
+                </div>
+                
+                <!-- Left links -->
+                <div class="mb-2 mt-2 row ml-2 d-flex">
+                        <a class="nav-link" th:href="@{/chats}"><p class="text">Chats</p></a>
+                        <a class="nav-link" th:href="@{/home}"><p class="text">Find Friends</p></a>
+                </div>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex col-md-2 pr-0 pl-0 col-2 col-sm-3 col-md-4 text-right">
+                <!-- Avatar -->
+                <div class="dropdown show nav-user d-flex pr-0" >
+                    <h6 th:if="${user}" class="text mr-3 pt-2 userName">Welcome: <span th:text="${user.userName}"></span> </h6>
+                    <a th:href="@{/profile}"><img class="nav-user-ava" alt="" :src="'data:image/jpeg;base64,'+ava64"></a>
+                    <a class="dropdown-toggle ml-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" th:href="@{/profile}">Profile</a>
+                        <a th:if="${user.role_id == 1}" class="dropdown-item" th:href="@{/management}">Management</a>
+                        <a class="dropdown-item" th:href="@{/logout}">Log out</a>
+                      </div>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+
+        <div class="text-center">
+            <div class="details-user col-md-10 col-12">
+                <div class="no"></div>
+                <div class="user-info col-11">
+                    <div class="container col-lg-3 col-md-5 col-sm-10 col-12 mr-0 ml-0 px-0">
+                        <img id="avatar-img" class="details-user-ava mt-4" alt="" :src="'data:image/jpeg;base64,'+frava64" />
+                        <div class="more-info-sm text-left pl-1 mt-2">
+                            <p class="text">Age: {{ friend.age }} </p>
+                            <p class="text">Gender: {{ friend.gender }} </p>
+                            <p class="text">Hobby: Sing, Dance, Travel</p>
+                        </div>
+                        <div class="col-12 res-info-sm px-0">
+                            <div class="col-12 row text-left ml-0 px-0">
+                                <div class="col-7 px-0">
+                                    <h1 class="text sm pl-5 mt-2" >{{ friend.userName }}</h1>
+                                    <h6 class="text sm" v-if="friend.role_id == 1" >Administrator</h6>
+                                    <h6 class="text sm" v-if="friend.role_id == 2" >User</h6>
+                                    <h6 class="text sm">Email: {{ friend.email }} </h6>
+                                    <h6 class="text sm mb-0">Phone number: {{ friend.phoneNumber }} </h6>
+                                </div>
+                                <div class="col-5 px-0 mt-4">
+                                    <p class="text sm mt-3">Age: {{ friend.age }} </p>
+                                    <p class="text sm">Gender: {{ friend.gender }} </p>
+                                    <p class="text mb-0 sm">Hobby: Sing, Dance, Travel</p>
+                                </div>
+                            </div>
+                            <div class="col-12 text-left px-0">
+                                <hr>
+                                <h6 class="text sm">Descriptions</h6>
+                                <p class="text sm">{{friend.descriptions}}</p>
+                            </div>
+                        </div>
+                        <div class="actions-sm col-12 px-0 row mt-2 ml-0">
+                                <div class="actions-sm col-7 text-left px-0">
+                                <hr>
+                                <h6 class="text sm pl-2">Actions</h6>
+                                <a class="btn btn-delete-sm text-white" @click="unFriend(friend.id)">Unfriend</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="details-user-info text-left col-lg-4 col-md-5 col-0" >
+                        <h1 class="text" >{{ friend.userName }}</h1>
+                        <h6 class="text" v-if="friend.role_id == 1" >Administrator</h6>
+                        <h6 class="text" v-if="friend.role_id == 2" >User</h6>
+                        <h6 class="text">Email: {{ friend.email }} </h6>
+                        <h6 class="text">Phone number: {{ friend.phoneNumber }} </h6>
+                        <hr>
+                        <div class="more-info">
+                            <p class="text">Age: {{ friend.age }} </p>
+                            <p class="text">Gender: {{ friend.gender }} </p>
+                            <p class="text">Hobby: Sing, Dance, Travel</p>
+                        </div>
+                        <div class="details-user-descriptions-sm text-left ml-0" >
+                            <h4 class="text">Descriptions</h4>
+                            <p class="text">{{friend.descriptions}}</p>
+                        </div>
+                    </div>
+                    <div class="details-user-descriptions text-left col-3 ml-0" >
+                        <h4 class="text">Descriptions</h4>
+                        <hr>
+                        <p class="text">{{friend.descriptions}}</p>
+                    </div>
+                    <div class="actions text-left ml-0" >
+                        <h4 class="text">Actions</h4>
+                        <hr>
+                        <a class="btn btn-delete text-white" @click="unFriend(friend.id)">Unfriend</a>
+                    </div>
+                </div>
+                <div class="no"></div>
+                <div class="user-sub-img col-11">
+                    <div class="details-imgs text-left col-12" >
+                    </div>
+                    <hr>
+                    <div class="text-left col-12 list-user-img" >
+                        <img class="list-img-item" alt="" th:src="@{../../users/img/ava02.jpg}" />
+                        <img class="list-img-item" alt="" th:src="@{../../users/img/ava03.jpg}" />
+                        <img class="list-img-item" alt="" th:src="@{../../users/img/ava04.jfif}" />
+                        <img class="list-img-item" alt="" th:src="@{../../users/img/ava05.jpg}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" th:src="@{../users/js/user/friendprofile.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>

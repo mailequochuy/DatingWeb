@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon"
+    th:href="@{../../FE/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css"
+    th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{../../FE/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{../../BE/dashboard.css}" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+    th:href="@{FE/fontawesome/css/all.css}" />
+</head>
+<body id="body-home">
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-nav"
+            style="margin-right: 25px;">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+
+                    <div class="text-logo">
+                        <h1 style="font-family: Impact, fantasy">
+                            <a class="text-logo atag" th:href="@{/home}"><i
+                                class="fas fa-heart"></i> F-Love </a> Management
+                        </h1>
+
+                    </div>
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"
+                        style="margin-left: 20px">
+                        <li class="nav-item text ml-5"><a class="nav-link text"
+                            th:href="@{/management/roles}">
+                                <h6 class="text">Roles Manager</h6>
+                        </a></li>
+                        <li class="nav-item text ml-5 is-active-manager"><a class="nav-link text"
+                            th:href="@{/management/users}">
+                                <h6 class="text">Users Manager</h6>
+                        </a></li>
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
+
+                <!-- Right elements -->
+                <div class="d-flex align-items-center">
+                    <!-- Avatar -->
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                            href="#" id="navbarDropdownMenuAvatar" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false"> <img
+                            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                            class="rounded-circle" height="25"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuAvatar">
+                            <li><a class="dropdown-item" href="#">My profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+
+        <div class="text-center">
+            <div class="details-user col-lg-10">
+                <div class="no"></div>
+                <div class="user-info col-lg-11">
+                    <img class="details-user-ava" alt="" th:src="@{../../FE/img/ava7.jpg}" />
+                    <div class="details-user-info text-left" >
+                        <h1 class="text">La Lisa</h1>
+                        <h6 class="text">Administrator</h6>
+                        <h6 class="text">Email: user001@gmail.com</h6>
+                        <h6 class="text">Phone number: 0123456789</h6>
+                        <hr>
+                        <p class="text">Age: 22</p>
+                        <p class="text">Gender: Girl</p>
+                        <p class="text">Hobby: Sing, Dance, Travel</p>
+                        <p class="text">Skills: PHP, Java, C++</p>
+                    </div>
+                    <div class="details-user-descriptions text-left col-lg-6" >
+                        <h4 class="text">Descriptions</h4>
+                        <hr>
+                        <p class="text">Finding true love, no trap no game!</p>
+                    </div>
+                    <div class="details-user-descriptions text-left" >
+                        <h4 class="text">Actions</h4>
+                        <hr>
+                        <a class="btn btn-edit text-white" th:href="@{/management/users/edit}">Edit</a>
+                        <a class="btn btn-delete text-white" href="#">Delete</a>
+                        <br>
+                        <br>
+                        <br>
+                        <h6 class="text">Block User</h6>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="no"></div>
+                <div class="user-sub-img col-lg-11">
+                    <div class="no"></div>
+                    <div class="details-imgs text-left col-lg-12" >
+                        <h3 class="text">Images</h3>
+                        <a class="btn btn-add text-white right" >Edit images</a>
+                    </div>
+                    <hr>
+                    <div class="text-left col-lg-12 list-user-img" >
+                        <img class="list-img-item" alt="" th:src="@{../../FE/img/ava7.jpg}" />
+                        <img class="list-img-item" alt="" th:src="@{../../FE/img/ava5.jpg}" />
+                        <img class="list-img-item" alt="" th:src="@{../../FE/img/ava6.jfif}" />
+                        <img class="list-img-item" alt="" th:src="@{../../FE/img/ava4.jpg}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</body>
+</html>

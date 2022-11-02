@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating App</title>
+    <link rel="icon" type="image/x-icon" th:href="@{users/favicon/favicon.ico}">
+    <link rel="stylesheet" type="text/css"
+    th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{users/css/login.css}" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" th:href="@{users/fontawesome/css/all.css}" />
+</head>
+<body id="bodydiv">
+    <div  id="app">
+    <section class="text-center col-xl-8 col-lg-10">
+        <div class="card mx-4 mx-md-5 shadow-5-strong justify-content-center form-login-big" >
+            <div class="card-body py-2 px-md-2">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-7 imglogin">
+                        <img class="imglogin-img" alt="" th:src="@{users/img/bgindex.png}">
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8 pt-3 ml-2">
+                        <div class="col-lg-12 text-center text-white">
+                            <h1 class="logo-text"><i class="fas fa-heart"></i> F-Love </h1>
+                            <h1 class="logo-text">
+                                Open your heart
+                            </h1>
+                        </div>
+                        <div th:if="${error}"  class="notification-error">
+                            <h5 th:text="${error}"></h5>
+                        </div>
+                        <form @submit="checkForm" action="/registerUser" class="form-lr" method="post">
+                            <!-- Email input -->
+                            <div class="form-outline mb-4 text-left">
+                                <label class="form-label text-left" for="form3Example3"
+                                    style="color: #B48FD9">Email address</label>
+                                    <input type="text" id="email" name="email" v-model="email" class="form-control"/>
+                                    <p class="error-input">{{ emailErrorInput }}</p>
+                            </div>
+                            <div class="form-outline mb-4 text-left">
+                                <label class="form-label text-left" for="form3Example3"
+                                    style="color: #B48FD9">User name</label>
+                                    <input type="text" id="userName" name="userName" v-model="userName" class="form-control"/>
+                                    <p class="error-input">{{ userNameErrorInput }}</p>
+                            </div>
+                            <!-- Password input -->
+                            <div class="form-outline mb-4 text-left">
+                                <label class="form-label" for="form3Example4"
+                                    style="color: #B48FD9">Password</label>
+                                    <input type="password" id="password" name="password" v-model="password" class="form-control"/>
+                                    <p class="error-input">{{ passwordErrorInput }}</p>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="raise button btn btn-block mb-4 text-white" > Register user </button>
+
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                                <p style="color: #B48FD9">or</p>
+                                <a th:href="@{/login}" type="button"
+                                    class="raise btn btn-link btn-floating mx-1">Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    
+    <script th:src="@{users/js/register.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</body>
+</html>
