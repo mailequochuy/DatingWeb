@@ -1,0 +1,82 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image: url(../img/bg-bg.png);
+	text-align: center;
+}
+h1 {
+	font-family: Bradley Hand, cursive;
+	font-size: 60px;
+	text-shadow: 2px 2px #FF0066;
+}
+
+h2 {
+	color: #6600FF;
+	text-shadow: 2px 2px #FCDAD5;
+}
+
+h3 {
+	color: #BBD8F2;
+}
+
+section
+{
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.button {
+	background-color: #6600FF;
+}
+
+.btn-link{
+	text-decoration: none !important;
+	background-color: #BBD8F2;
+	color: white;
+}
+
+.form-lr{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.notification-error{
+	margin: 0px;
+	padding-top: 20px;
+	color: #FF0066;
+}
+
+.notification-success{
+	margin: 0px;
+	padding-top: 20px;
+	color: #04bfbf;
+}
+
+.error-input{
+	font-size: 15px;
+	color: #FF0066;
+}
+
+
+#bodydiv{ animation: changeBg 30s infinite; text-align: center;}
+@keyframes changeBg{
+   0%,100%  {background-image: url(../img/bg-bg.png);}
+   25% {background-image: url(../img/bg4.jpg);}
+   50% {background-image: url(../img/bg.jpg);}
+   75% {background-image: url(../img/bg3.jpg);}
+}
+
+.logo-text {
+	font-size: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .ip12prm {
+  	width: 300px;
+    position: absolute;
+    top: 15%;
+    left: 5%;}
+  .logo-text {
+  	font-size: 30px;
+    }
+}

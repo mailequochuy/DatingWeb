@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+    content="width=device-width, initial-scale=1.0">
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon" th:href="@{users/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css"
+    th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{users/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{users/css/chatpage.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{users/css/finding.css}" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+    th:href="@{users/fontawesome/css/all.css}" />
+</head>
+<body>
+    <script th:inline="javascript">
+        var listMsg = [[${ listMsg }]];
+        var listFriends = [[${ listUserFriends }]];
+        var listMarked = [[${ listMarked }]];
+        var user = [[${ user }]];
+        var listLikeYou = [[${ listLikeYou }]]
+    </script>
+    <div id="app">
+    
+    <div th:replace="users/layouts/header :: header('chat')"></div>
+    
+        <div class="list-friend-sm mb-2" >
+            <div class="list-friend-sm col-12 blur ml-0 d-flex pl-0 pr-0">
+                <div class="col-4 pl-0 pr-0">
+                    <div >
+                                <div class="like-notifications-sm card-body pr-1 pl-1 py-1">
+                                    <div th:if="${listLikeYou}" class="text-left">
+                                        <h6 class="text mb-0 pl-2">Like you</h6>
+                                        <div v-for="(like, index) in listLikeYou" :key="like.id" v-if="index == 0" class="row">
+                                            <div class="like-imgava">
+                                                <img class="like-user-ava-sm ml-3 mb-2" alt="" :src="'data:image/jpeg;base64,'+like.avatar">
+                                            </div>
+                                                <div class="ml-1 text-left">
+                                                    <h6 class="text friend-name-sm pl-2"> {{ like.userName }} </h6>
+                                                    <p class="p-md text">Age: {{ like.age }}, {{ like.gender }}</p>
+                                                    <p class="p-sm text pl-2 pt-2">& {{countLikes}} <i class="color-pink fas fa-heart"></i></p>
+                                                </div>
+                                                <div class="p-md">
+                                                    <p class="text p-md pl-1 pt-2">&{{countLikes}} <i class="color-pink fas fa-heart"></i></p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div th:if="${noListLikeYou}" class="text-center"><h6 class="text pt-2">[[${noListLikeYou}]]</h6></div>
+                                </div>
+                    </div>
+                </div>
+                <div class="col-8 pl-0 pr-0">
+                                <div th:if="${listUserFriends}" class="col-12 list-user-friends-sm d-flex py-2 px-md-2 pr-0 pl-0">
+                                    <section v-for="(friend, index) in listFriends" :key="friend.id" class="text-left d-flex">
+                                            <div class="ml-2 pt-2">
+                                                <div class="imgava">
+                                                    <img v-on:click="showFriendMessage(index, friend)" alt="" :src="'data:image/jpeg;base64,'+friend.avatar" 
+                                                    :class="{'user-ava-sm': index != indexcss , 'user-ava-sm-active': index == indexcss}">
+                                                </div>
+                                                <!-- <div class="user-options text mr-0"> -->
+                                                <!-- <button @click.stop.prevent="markedFriend(friend.id)" ><i :class="{'far fa-heart text text-right': friend.id != markfriend.friend_id, 'fas fa-heart text text-right': friend.id == markfriend.friend_id}"></i> </button> -->
+                                                <!-- <i class="fas fa-ellipsis-h text text-right"></i>-->
+                                                <!-- <button @click.stop.prevent="markedFriend(friend.id)" ><i class="far fa-heart text text-right"></i> </button> -->
+                                                <!-- </div> -->
+                                            </div>
+                                        <button class="delete-friend-btn" @click.stop.prevent="deleteFriend(friend.id, friend.userName, index)" >
+                                                <i class=" text fas fa-times text text-right"></i>
+                                        </button>
+                                    </section>
+                                </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex h-90 hm-80">
+            <section class="text-center side-bar col-lg-3 col-md-4 shadow-5-strong justify-content-center pr-0 pl-2 py-2 h-100">
+                        <section class="text-center card justify-content-center border shadow-lg m-0 mb-1 h-15">
+                                        <div class="col-12 pt-3">
+                                            <h2 class="fw-bold mb-2 custom-text">Chatting</h2>
+                                            <p class="quote">{{ selectedQuote }}</p>
+                                        </div>
+                        </section>
+                        <section class="text-center h-85">
+                            <h4 th:if="${noList}" class="text mt-3" > <span th:text="${noList}" ></span> </h4>
+                            <div class="card shadow-5-strong shadow-lg h-100">
+                                <div class=" like-notifications py-2 px-md-2 pr-1 pl-1 h-15">
+                                    <div th:if="${listLikeYou}" class="text-center">
+                                        <h5 class="text mb-2">Someone like you {{time}}</h5>
+                                        <div v-for="(like, index) in listLikeYou" :key="like.id" v-if="index == 0" class="row">
+                                            <div class="like-imgava">
+                                                <img class="like-user-ava ml-3" alt="" :src="'data:image/jpeg;base64,'+like.avatar">
+                                            </div>
+                                                <div class="ml-1 md-none text-left">
+                                                    <h6 class="text pl-2"> {{ like.userName }} </h6>
+                                                    <p class="text des">Age: {{ like.age }}, {{ like.gender }}</p>
+                                                </div>
+                                            <div>
+                                                <p class="text pl-2 pt-2">& {{countLikes}} <i class="color-pink fas fa-heart"></i></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div th:if="${noListLikeYou}" class="text-center"><h5 class="text pt-2" th:text="${noListLikeYou}"></h5></div>
+                                </div>
+                                <div th:if="${listUserFriends}" class=" card-body pt-2 pb-0 px-md-2 pr-0 pl-0 h-100 overflow-auto">
+                                    <section v-for="(friend, index) in listFriends" :key="friend.id" class="text-left shadow-5-strong justify-content-center border mb-1">
+                                            <div v-on:click="showFriendMessage(index, friend)" :class="{'card-body py-2 px-sm-2 user-chatting pl-2 pr-0 ': index != indexcss , 'card-body py-2 px-sm-2 user-chatting-0' : index == indexcss} ">
+                                                <div class="imgava">
+                                                    <img class="user-ava" alt="" :src="'data:image/jpeg;base64,'+friend.avatar">
+                                                </div>
+                                                <div class="ml-2">
+                                                    <h4 class="text friend-name"> {{ friend.userName }} </h4>
+                                                <!--     <h6 class="text text-center lg-none">Lisa: I miss you -.- !!</h6>  -->
+                                                </div>
+                                                <div class="user-options md-none text">
+                                                <!-- <button @click.stop.prevent="markedFriend(friend.id)" ><i :class="{'far fa-heart text text-right': friend.id != markfriend.friend_id, 'fas fa-heart text text-right': friend.id == markfriend.friend_id}"></i> </button> -->
+                                                <!-- <i class="fas fa-ellipsis-h text text-right"></i>-->
+                                                <!-- <button @click.stop.prevent="markedFriend(friend.id)" ><i class="far fa-heart text text-right"></i> </button> -->
+                                                <button @click.stop.prevent="deleteFriend(friend.id, friend.userName, index)" ><i class=" text fas fa-times text text-right"></i></button>
+                                                </div>
+                                            </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+            </section>
+            <section class="text-center chat-content col-12 col-md-8 col-lg-9 h-100">
+                <div class="py-2 px-2 h-100 d-flex" v-if="!isShowMessage">
+                        <section id="chat-content-main" v-if="isShowMessageSM" :class="{'text-left col-md-12 pr-0 pl-0 h-100': isActive, 'text-left col-md-8 pr-0 pl-0 h-100': !isActive}">
+                            <div class="shadow-5-strong justify-content-center border bg-white h-100">
+                                <div class="card-body pt-2 pb-3 mt-1 h-100 px-1">
+                                        <div class="col-sm-12 h-100 px-0 hm-90">
+                                            <div class="header-chat row">
+                                                <div class="col-6 ava-name-user">
+                                                    <img class="in-chat-ava" alt="" :src="'data:image/jpeg;base64,'+userFriend.avatar">
+                                                    <a class="name" :href="'/profile/' + userFriend.id"><h3 class="ml-3 mt-2 text">{{ userFriend.userName }}</h3></a>
+                                                </div>
+                                                <div class="col-6 option-open-ops text-right">
+                                                    <button class="mr-2" v-on:click="showMoreOptions" ><i class="fas fa-ellipsis-h text text-right"></i></button>
+                                                </div>
+                                                <div class="col-6 option-open-ops-sm text-right">
+                                                    <button class="mr-2" v-on:click="showMoreOptionsSM" ><i class="fas fa-ellipsis-h text text-right"></i></button>
+                                                </div>
+                                            </div>
+                                            <hr style="color: #888DF2">
+                                            <div class="col-sm-12 d-flex pd-0 hm-80">
+                                                <div id="usermessage" ref="friendmessage" class="chatting-message col-sm-12 ">
+                                                    <div v-for="mess in arraymessage" class="row sub-div mt-1">
+                                                        <div v-if="mess.user_id == user.id" class="sub-div mt-1 mr-4 text-right user-message">
+                                                            <p class="mess ml-3 mt-2 text mr-3 text-right"> {{ mess.message }} </p>
+                                                        </div>
+                                                        <div v-if="mess.friend_id == user.id" class="sub-div mt-1 text-left text-message">
+                                                            <img class="friend-message-ava mt-2" alt=""
+                                                                :src="'data:image/jpeg;base64,'+userFriend.avatar">
+                                                                <div class="friend-message text-left">
+                                                                    <p class="mess ml-3 mt-2 text">{{ mess.message }}</p>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class=" row col-12 mt-2 text-right pr-0">
+                                                    <div class="col-2 media-options text-left pt-3 d-flex">
+                                                        <i class="icon-options fas fa-microphone-alt"></i>
+                                                        <i class="icon-options fas fa-image"></i>
+                                                        <i class="icon-options fas fa-paperclip"></i>
+                                                    </div>
+                                                    <div class="col-10 pr-0 pl-0 d-flex">
+                                                        <textarea @keyup.enter="getMessage(userFriend.id)" v-model="usermessage" id="message" class="col-11 input-message text-left" ></textarea>
+                                                        <i v-on:click="getMessage(userFriend.id)" class="far fa-paper-plane text icon-send-message pl-0 pt-2"></i>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="more-ops" v-if="!isHidden" class="text-center more-info col-md-4 col-12 pr-0 h-100">
+                            <div class="card shadow-5-strong justify-content-center border h-100">
+                                <div class="card-body py-2 px-md-2 h-100">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-12 px-0 text-center">
+                                            <div class="text-right left hide-ops">
+                                                <button v-on:click="hideMoreOptions" ><i class=" text fas fa-times text text-right"></i></button>
+                                            </div>
+                                            
+                                            <div class="text-right left hide-ops-sm mr-1">
+                                                <button v-on:click="hideMoreOptionsSM" ><i class=" text fas fa-times text text-right"></i></button>
+                                            </div>
+                                            <div>
+                                                <img class="user-chatting-ava" alt=""
+                                                    th:src="@{users/img/ava01.jfif}">
+                                            </div>
+                                            <div class="mt-2">
+                                                <h2 class="text">
+                                                    Lisa
+                                                    </h2>
+                                            </div>
+                                            <br> <br>
+                                            <div class="mt-2">
+                                                <h6 class="text">
+                                                    More options
+                                                    </h6>
+                                            </div>
+                                            <br> <br>
+                                            <div class="mt-2 text-left pl-1">
+                                                <h5 class="text ml-3">Shared media</h5>
+                                                <div class="row chatting-files col-11 mr-0 ml-2 pl-0 pr-0">
+                                                    <img class="user-chatting-files" alt="" th:src="@{users/img/ava02.jpg}" /> 
+                                                    <img class="user-chatting-files" th:src="@{users/img/ava01.jfif}" /> 
+                                                    <img class="user-chatting-files" alt="" th:src="@{users/img/ava06.jfif}"/> 
+                                                    <img class="user-chatting-files" alt="" th:src="@{users/img/ava7.jpg}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                </div>
+            </section>
+        </div>
+        <div class="text-center" th:insert="users/layouts/footer :: footer"></div>
+    </div>
+    
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Confirm delete</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        delete this friend?
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger">Delete</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+    <script th:src="@{users/js/chatpage.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

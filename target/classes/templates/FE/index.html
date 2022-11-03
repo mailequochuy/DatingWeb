@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+	content="width=device-width, initial-scale=1.0">
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon" th:href="@{FE/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{FE/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{FE/css/slider.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{FE/css/finding.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+	integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{FE/fontawesome/css/all.css}" />
+	<script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+<link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+<script src="https://unpkg.com/@johmun/vue-tags-input/dist/vue-tags-input.js"></script>
+</head>
+<body id="body-home">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light border-nav"
+		style="margin-right: 25px;">
+		<!-- Container wrapper -->
+		<div class="container-fluid">
+			<!-- Toggle button -->
+			<button class="navbar-toggler" type="button"
+				data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<!-- Collapsible wrapper -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<!-- Navbar brand -->
+
+				<div class="text-logo">
+					<h1 style="font-family: Impact, fantasy">
+						<a class="atag" th:href="@{/home}"><i class="fas fa-heart"></i>
+							F-Love </a>
+					</h1>
+
+				</div>
+				<!-- Left links -->
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0"
+					style="margin-left: 20px">
+					<li class="nav-item"><a class="nav-link" th:href="@{/chats}">Chats</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/home}">Find
+							friends</a></li>
+				</ul>
+				<!-- Left links -->
+			</div>
+			<!-- Collapsible wrapper -->
+
+			<!-- Right elements -->
+			<div class="d-flex align-items-center">
+				<!-- Avatar -->
+				<div class="dropdown">
+					<a class="dropdown-toggle d-flex align-items-center hidden-arrow"
+						href="#" id="navbarDropdownMenuAvatar" role="button"
+						data-mdb-toggle="dropdown" aria-expanded="false"> <img
+						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+						class="rounded-circle" height="25"
+						alt="Black and White Portrait of a Man" loading="lazy" />
+					</a>
+					<ul class="dropdown-menu dropdown-menu-end"
+						aria-labelledby="navbarDropdownMenuAvatar">
+						<li><a class="dropdown-item" href="#">My profile</a></li>
+						<li><a class="dropdown-item" href="#">Settings</a></li>
+						<li><a class="dropdown-item" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- Right elements -->
+		</div>
+		<!-- Container wrapper -->
+	</nav>
+
+	<div id="app" style="display: flex;">
+		<div class="row after-respo">
+				<i class="fas fa-ellipsis-h icon-choices-respo"></i>
+		</div>
+		<section class="text-center choices_section" style="width: 480px;">
+			<div class="card shadow-5-strong justify-content-center border"
+				style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+				<div class="card-body py-2 px-md-2" style="height: 850px">
+					<section class="text-center " style="width: 450px;">
+						<div class="card shadow-5-strong justify-content-center border"
+							style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+							<div class="card-body py-2 px-md-2" style="height: 100px">
+								<div class="row d-flex justify-content-center">
+									<div class="col-lg-8">
+										<h2 class="fw-bold mb-2"
+											style="font-family: Bradley Hand, cursive; color: #716DF2">Finding
+											...</h2>
+										<h6 style="font-family: Bradley Hand, cursive; color: #716DF2">{{
+											message }}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="text-center" style="width: 450px;">
+						<div class="card shadow-5-strong justify-content-center border"
+							style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+							<div class="card-body py-2 px-md-2" style="height: 710px">
+								<h3 class="text mt-3">Your choices</h3>
+								<section class="text-left"
+									style="width: 420px; margin-bottom: 5px;">
+									<div class="card shadow-5-strong justify-content-center border"
+										style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+										<div class="card-body py-2 px-md-2  border"
+											style="height: 100px;">
+											<h5 class="text ml-3">Age</h5>
+											<select class="col-lg-12 mr-1 input-message text-left" >
+											    <option class="col-lg-12 mr-1 input-message text-left" :value="n+17" v-for="n in 63">{{n+17}}</option>
+											 </select>
+										</div>
+									</div>
+								</section>
+								<section class="text-left" style="width: 420px;">
+									<div class="card shadow-5-strong justify-content-center border"
+										style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+										<div class="card-body py-2 px-md-2  border"
+											style="height: 100px;">
+											<h5 class="text ml-3">Gender</h5>
+											<div class="col-lg-12 mr-1 input-message text-left pt-2">
+												<input class="radio-gender" type="radio" id="one" value="Man" v-model="picked" />
+												<label for="one">Man</label>
+												
+												<input class="radio-gender"  type="radio" id="two" value="Woman" v-model="picked" />
+												<label for="two">Woman</label>
+												
+												<input class="radio-gender"  type="radio" id="else" value="else" v-model="picked" />
+												<label for="two">Else</label>
+											</div>
+										</div>
+									</div>
+								</section>
+								<section class="text-left hobby" style="width: 420px;">
+									<div class="hobby card shadow-5-strong justify-content-center border"
+										style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+										<div class="card-body py-2 px-md-2 border"
+											style="height: 100px;">
+											<h5 class="text ml-3">Hobby</h5>
+											<template>
+											  <div>
+											  	<multiselect class="multi_tag" v-model="value" tag-placeholder="Add this as new hobby" placeholder="Search or add a hobby" label="name" track-by="name" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+  											</div>
+											</template>
+										</div>
+									</div>
+								</section>
+								<a class="btn btn-color text-white">Confirm!!</a>
+							</div>
+						</div>
+					</section>
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-8">
+							<h2 class="fw-bold mb-5"
+								style="font-family: Bradley Hand, cursive"></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="text-center finding-list">
+			<div class="">
+				<div class="home card-body py-2 px-md-2 text-center">
+					<div class=" bottom-home col-lg-12 text-center finding-users"
+						style="height: 450px; display: flex;">
+						<div class="col-lg-4 sub_images" style="margin: 30px">
+							<div class="slider-container">
+								<div class="menu">
+									<label for="slide-dot-1"></label> <label for="slide-dot-2"></label>
+									<label for="slide-dot-3"></label>
+								</div>
+
+								<input id="slide-dot-1" type="radio" name="slides" checked>
+								<div class="slide slide-1"></div>
+
+								<input id="slide-dot-2" type="radio" name="slides">
+								<div class="slide slide-2"></div>
+
+								<input id="slide-dot-3" type="radio" name="slides">
+								<div class="slide slide-3"></div>
+							</div>
+						</div>
+
+						<div class="text-left col-lg-3 user-infor">
+							<h1 class="text-name-user">La Lisa</h1>
+							<h5 class="text-user-info">Age: 22</h5>
+							<br>
+							<h5 class="text-user-info">Gender: Woman</h5>
+							<br>
+							<h5 class="text-user-info">Hobby: Sing, Dance, Guitar,
+								Photograph, Design</h5>
+							<br>
+							<h5 class="text-user-info">Skills: HTML, CSS, PHP, JAVA,...</h5>
+
+						</div>
+
+						<div class="col-lg-4 text-left mt-5 descriptions" style="margin: 30px">
+							<h3 class="text-user-info">Descriptions</h3>
+							<h6 class="text-user-info">Finding true love, no trap no
+								game!!! <3</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-5 text-center actions-find-user row">
+				<div class="col-sm-6 text-right">
+					<button @click="say('Opp!! next ... ')">
+						<i class="action-icon icon-like fas fa-heart"></i>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button @click="say('Opp!! next ... ')">
+						<i class="action-icon icon-dislike fas fa-times"></i>
+					</button>
+				</div>
+			</div>
+		</section>
+
+	</div>
+	<script src="https://unpkg.com/@johmun/vue-tags-input/dist/vue-tags-input.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+	
+	<script type="text/javascript">
+		var app = new Vue(
+				{
+					el : '#app',
+					components: { Multiselect: window.VueMultiselect.default },
+					data () {
+						return {
+						value: [],
+						options: [
+					        { name: 'Sing'},
+					        { name: 'Dance'},
+					        { name: 'Game'},
+					        { name: 'Code'},
+					        { name: 'Music'},
+					        { name: 'Guitar'}
+					    ],
+					    value2: [],
+						options2: [
+						     { name: 'Introvert'},
+						     { name: 'Extrovert'},
+						     { name: 'Extrovert'},
+						     { name: 'Extrovert'}
+						],
+						message : "It's so easy to fall in love but hard to find someone who will catch you",
+						picked: 'One',
+						}
+					}, methods: {
+						addTag (newTag) {
+						      const tag = {
+						        name: newTag
+						      }
+						      this.options.push(tag)
+						      this.value.push(tag)
+						    }
+						,
+						addPer(newTag) {
+						      const tag = {
+								        name: newTag
+								      }
+								      this.options.push(tag)
+								      this.value.push(tag)
+								    }
+					}
+				})
+	</script>
+</body>
+</html>

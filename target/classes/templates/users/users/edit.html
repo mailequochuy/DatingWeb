@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Dating App</title>
+<link rel="icon" type="image/x-icon"
+    th:href="@{../../FE/favicon/favicon.ico}">
+<link rel="stylesheet" type="text/css"
+    th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{../../FE/css/user.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{../../BE/dashboard.css}" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+    th:href="@{FE/fontawesome/css/all.css}" />
+</head>
+<body id="body-home">
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-nav"
+        style="margin-right: 25px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button"
+                data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+
+                <div class="text-logo">
+                    <h1 style="font-family: Impact, fantasy">
+                        <a class="atag" th:href="@{/home}"><i class="fas fa-heart"></i>
+                            F-Love </a>
+                    </h1>
+
+                </div>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"
+                    style="margin-left: 20px">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/chats}">Chats</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/home}">Find
+                            friends</a></li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex col-md-2 pr-0 pl-0">
+                <!-- Avatar -->
+                <div class="dropdown show nav-user d-flex" >
+                    <h6 th:if="${user}" class="text mr-3 pt-2">Welcome: <span th:text="${user.userName}"></span> </h6>
+                    <img class="nav-user-ava" alt="" th:src="@{../FE/img/ava4.jpg}">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" th:href="@{/profile}">Profile</a>
+                        <a th:if="${user.role_id == 1}" class="dropdown-item" th:href="@{/management}">Management</a>
+                        <a class="dropdown-item" th:href="@{/logout}">Log out</a>
+                      </div>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+
+        <div style="display: flex;">
+            <section class="text-center" style="width: 1920px;">
+                <div class="card shadow-5-strong justify-content-center border"
+                    style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px">
+                    <div class="card-body py-2 px-md-2" style="height: 850px">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="col-lg-12 text-center">
+                                    <h1 class="text dashboard-text">Edit Profile <span th:text="${user.userName}"></span> </h1>
+                                </div>
+                                <hr>
+                                <div class="col-lg-12 text-left mt-5">
+                                    <form action="/user/updateprofile" method="post">
+                                        <div class="col-lg-8 text-left" >
+                                            <label class=" text table-text">Age: </label>
+                                            <input type="number" name="age" v-model="age" class="col-lg-12 input-message text-left" placeholder="Age ... " />
+                                        </div>
+                                        <div class="col-lg-8 text-left mt-3 mb-2" >
+                                            <label class=" text table-text">Gender: </label>
+                                                    <input v-model="gender" name="gender" class="radio-gender" type="radio" id="gender" value="Man"  />
+                                                    <label for="Man">Man</label>
+                                                    
+                                                    <input v-model="gender" name="gender" class="radio-gender"  type="radio" id="gender" value="Woman" />
+                                                    <label for="Woman">Woman</label>
+                                                    
+                                                    <input v-model="gender" name="gender" class="radio-gender"  type="radio" id="gender" value="else" />
+                                                    <label for="else">Else</label>
+                                        </div>
+                                        <div class="col-lg-8 text-left" >
+                                            <label class=" text table-text">Phone number: </label>
+                                            <input class="col-lg-12 input-message text-left" name="phoneNumber"  v-model="phoneNumber" placeholder="Phone number ... " />
+                                        </div>
+                                        <div class="col-lg-8 text-left" >
+                                            <label class=" text table-text">Hobbies: </label>
+                                            <template>
+                                                  <div>
+                                                      <multiselect class="multi_tag" v-model="value" tag-placeholder="Add this as new hobby" placeholder="Search or add a hobby" label="name" track-by="name" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+                                                  </div>
+                                            </template>
+                                        </div>
+                                        <div class="col-lg-8 text-left" >
+                                            <label class=" text table-text">Descriptions: </label>
+                                            <textarea name="descriptions" v-model="descriptions" class="col-lg-12 input-message-textarea text-left" placeholder="Descriptions ... " rows="4" ></textarea>
+                                        </div>
+                                        <div class="col-lg-8 text-left" >
+                                            <label class=" text table-text">Avatar: </label>
+                                            <input type="file" class="col-lg-12 input-message text-left" placeholder="Editting ... " />
+                                        </div>
+                                        
+                                        <div class="col-lg-8 text-center mt-5">
+                                            <button type="submit" class="btn btn-edit text-white">Update profile</button>
+                                            <a class="btn btn-delete text-white" th:href="@{/profile}">Cancel</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    
+    <script type="text/javascript" th:src="@{../FE/js/user/edit.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</body>
+</html>

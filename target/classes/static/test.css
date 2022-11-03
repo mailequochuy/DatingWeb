@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+.div1 {
+    height: 100px;
+    background-color: #000;
+}
+.div2 {
+    height: 100px;
+    background-color: #eee;
+}
+.div3 {
+    height: 100px;
+    background-color: red;
+}
+.div4 {
+    height: 100px;
+    background-color: blue;
+}
+.div5 {
+    height: 100px;
+    background-color: green;
+}
+.div6 {
+    height: 100px;
+    background-color: pink;
+}
+
+.content {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.title {
+    background-color: #eee;
+}
+
+.list {
+    background-color: pink;
+}
+
+.main-content {
+    background-color: lightgreen;
+}

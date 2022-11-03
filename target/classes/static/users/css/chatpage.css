@@ -1,0 +1,494 @@
+@charset "ISO-8859-1";
+.side-bar{
+    
+}
+.pd-0{
+    padding: 0px;
+}
+
+.color-pink{
+    color: #f291a3;
+}
+
+.active_nav_item{
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    opacity: 1;
+}
+
+.user-chatting-0{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 2px solid;
+    border-color: #94a2F2;
+    height: 80px; display: flex;
+    cursor: pointer;
+}
+
+.user-chatting {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid;
+    border-color: #bbd8f2;
+    height: 80px; display: flex;
+    cursor: pointer;
+}
+
+.user-chatting-0-sm{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 2px solid;
+    border-color: #94a2F2;
+    height: 60px; display: flex;
+}
+
+.user-chatting-sm {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid;
+    border-color: #bbd8f2;
+    height: 60px; display: flex
+}
+
+.like-notifications{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid;
+    border-color: #f291a3;
+    background-color: #EEEEEE;
+}
+
+.like-notifications-sm{
+    height: 80px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: px;
+    border: 1px solid;
+    border-color: #f291a3;
+    background-color: #EEEEEE;
+}
+
+.user-ava {
+    width: 60px;
+    height: 60px;
+    border: 3px solid;
+    border-color: #888DF2;
+    border-radius: 50%;
+}
+
+.user-ava-sm {
+    width: 45px;
+    height: 45px;
+    border: 2px solid;
+    border-color: #888DF2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-ava-sm-active {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 2px solid;
+    border-color: #f291a3;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.like-user-ava{
+    width: 50px;
+    height: 50px;
+    border: 2px solid;
+    border-color: #888DF2;
+    border-radius: 50%;
+    opacity: 0.2;
+}
+
+.like-user-ava-sm{
+    width: 50px;
+    height: 50px;
+    border: 2px solid;
+    border-color: #888DF2;
+    border-radius: 50%;
+    opacity: 0.2;
+}
+
+.delete-friend-btn{
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 0px !important;
+    margin-bottom: 20px;
+}
+
+.icon-send-message{
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.list-user-friends{
+    height: 90%;
+}
+
+.chatting-message{
+    overflow-x: hidden !important;
+     overflow: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+}
+
+.sub_div {
+    position: absolute;
+    bottom: 0px;
+}
+
+.list-like-you{
+    height: 100px;
+}
+
+.blur{
+    background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(100px); margin: 5px;
+}
+
+p.quote{
+	margin: 0px;
+}
+
+.quote-div{
+    height: 100px;
+}
+
+.custom-text{
+    font-family: Bradley Hand, cursive; color: #716DF2;
+}
+
+.ava-name-user{
+    display: flex;
+}
+
+.chat-content-main{
+    
+}
+
+.chat-content{
+    padding: 0px;
+}
+
+.chat-content-sm{
+    display: none;
+}
+
+.option-open-ops{
+    
+}
+
+.option-open-ops-sm{
+    display: none;
+}
+
+.in-chat {
+    height: 800px;
+}
+
+.bg-chat{
+    height: 850px;
+    display: flex;
+}
+
+.more-info {
+    padding-left: 0px;
+}
+.more-info-div{
+}
+
+
+.chatting-files{
+    height: 400px;
+    display: flex;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.user-chatting-files {
+    width: 110px;
+    height: 110px;
+    margin: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.left{
+    margin-left: auto; margin-right: 10px
+}
+
+.input-message-div {
+    position: fixed;
+    bottom: 10px;
+    margin-right: 0px;
+    height: 50px;
+}
+
+.media-options{
+    margin-right: 0px;
+    padding-right: 0px;
+    display: block;
+}
+
+.icon-options{
+    color: #716DF2;
+    font-size: 22px;
+    padding-right: 10px;
+}
+
+.input-message{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 50px;
+    border: 2px solid;
+    border-color: #716DF2;
+    margin-left: 1%;
+}
+
+.user-message {
+    width: 400px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: 10px;
+    border: 2px solid;
+    border-color: #888DF2;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 0px;
+}
+
+.friend-message {
+    width: 400px;
+    height: 50px;
+    margin-left: 10px;
+    border: 2px solid;
+    border-color: #888DF2;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.list-friend-sm{
+    height: 80px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: none;
+}
+
+.p-md{
+    display: block;
+    font-size: 13px;
+}
+
+.p-sm{
+    display: none;
+    font-size: 14px;
+}
+
+.hide-ops-sm{
+    display: none;
+}
+
+a.name:hover
+{
+color: #888DF2;
+}
+
+.h-90{
+	height: 88%;
+}
+
+.h-85{
+    height: 85%;
+}
+.h-80{
+	height: 80%;
+}
+.hm-80{
+    height: 80%;
+}
+.h-15{
+	height: 15%;
+}
+
+@media only screen and (max-width: 1350px) {
+    .friend-message{
+       width: 320px;
+    }
+    .user-message{
+       width: 320px;
+    }p.p.mess{
+        font-size: 14px;
+    }p.des{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    p.quote{
+        font-size: 12px;
+    }p.mess{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    p.quote{
+        font-size: 12px;
+    }.icon-options{
+        font-size: 16px;
+    }.send-button{
+        font-size: 20px;
+    }.friend-name{
+        font-size: 20px !important;
+    }.friend-message{
+       width: 270px;
+       height: 45px;
+    }
+    .user-message{
+       width: 270px;
+       height: 45px;
+    }.icon-send-message{
+        font-size: 24px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .side-bar{
+        display: none;
+    }.list-friend-sm{
+        display: flex;
+    }.chat-menu{
+        height: 660px !important;
+    }
+    .list-user-friends{
+        height: 420px !important;
+    }
+    .in-chat {
+        height: 620px !important;
+    }
+    .bg-chat{
+        height: 660px !important;
+    }
+    .chatting-message{
+        height: 440px !important;
+    }
+    .more-info-div{
+        height: 620px !important;
+    }.user-chatting-files{
+         width: 70px !important;
+        height: 70px !important;
+    }.chatting-files{
+        height: 220px !important;
+    }
+    .option-open-ops-sm{
+        display: block
+    }
+    .option-open-ops{
+        display: none;
+    }.hide-ops-sm{
+        display: block;
+    }.hide-ops{
+        display: none;
+    }.icon-send-message{
+        font-size: 20px;
+        margin-top: 7px;
+        margin-right: 0px;
+    }p.mess{
+        font-size: 14px;
+    }.ava-name-user{
+        padding: 0px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .friend-name-sm{
+       font-size: 13px;
+       margin: 0px;
+    }.like-user-ava-sm{
+        width: 40px;
+        height: 40px;
+    }.p-sm{
+        display: block;
+    }.p-md{
+        display: none;
+    }.friend-message{
+       width: 200px;
+    }
+    .user-message{
+       width: 200px;
+    }.media-options{
+        padding-left: 5px;
+    }.icon-options{
+        padding-right: 5px;
+    }
+}
+
+
+@media only screen and (max-height: 920px) {
+    .chat-menu{
+        height: 740px;
+    }
+    .list-user-friends{
+        height: 480px !important;
+    }
+    .in-chat {
+        height: 680px;
+    }
+    .bg-chat{
+        height: 740px;
+    }
+    .chatting-message{
+        height: 500px;
+    }
+    .more-info-div{
+        height: 680px;
+    }.user-chatting-files{
+         width: 80px;
+        height: 80px;
+    }.chatting-files{
+        height: 300px;
+    }.hm-80{
+        height: 80% !important;
+    }.hm-90{
+        height: 90% !important;
+    }
+}
+
