@@ -11,4 +11,8 @@ public class MainBEController {
 		return "BE/dashboard";
 	}
 	
+	@GetMapping("test")
+	public String test() {
+		return "BE/test";
+	}
 }
