@@ -84,24 +84,16 @@ var app = new Vue(
                     if(response.data == false){
                         window.location.reload();
                     }else{
-                    axios.post('checkAva').then(function (response){
-                        if(response.data == false){
-                            _this.error = 'Update your avatar to start find friends!'
-                        }else{
                             _this.list = [];
                             _this.selectedItem = 0;
                             axios.post('/findFriends', data).then(function (response){
                                 if(response.data == ''){
                                     _this.noList = true
-                                    _this.isShowFind = false
                                 }else{
                                     _this.noList = false
                                     _this.list = response.data
-                                    _this.isShowFind = false
                                 }
                             });
-                        }
-                    })
                     }
                 });
                 }

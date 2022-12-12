@@ -89,11 +89,9 @@ var app = new Vue(
                             axios.post('/findFriends', data).then(function (response){
                                 if(response.data == ''){
                                     _this.noList = true
-                                    _this.isShowFind = false
                                 }else{
                                     _this.noList = false
                                     _this.list = response.data
-                                    _this.isShowFind = false
                                 }
                             });
                     }
