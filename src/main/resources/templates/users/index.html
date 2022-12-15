@@ -95,7 +95,8 @@
                         	<div class="row d-flex">
 	                            <div class="col-lg-3 col-md-4 col-sm-5 col-5 sub_images pl-0 pr-0 pt-3 ">
 	                                <div class="slider-container pl-0 pr-0 pt-5 ml-3">
-	                                    <img class="ava-user-finding ml-3" alt="" :src="'data:image/jpeg;base64,'+u.avatar">
+	                                    <!-- <img class="ava-user-finding ml-3" alt="" :src="'data:image/jpeg;base64,'+u.avatar"> -->
+                            			<img class="ava-user-finding ml-3" th:src="@{users/img/avatar.jpg}" /> 
 	                                </div>
 	                            </div>
 	                            <div class="text-left col-lg-5 col-sm-4 col-11 user-infor">

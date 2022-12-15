@@ -51,7 +51,8 @@
                 <!-- Avatar -->
                 <div class="dropdown show nav-user d-flex pr-0" >
                     <h6 th:if="${user}" class="text mr-3 pt-2 userName">Welcome: <span th:text="${user.userName}"></span> </h6>
-                    <a th:href="@{/profile}"><img class="nav-user-ava" alt="" :src="'data:image/jpeg;base64,'+ava64"></a>
+                    <!-- <a th:href="@{/profile}"><img class="nav-user-ava" alt="" :src="'data:image/jpeg;base64,'+ava64"></a> -->
+                    <a th:href="@{/profile}"><img class="nav-user-ava" alt="" th:src="@{../users/img/avatar.jpg}"></a>
                     <a class="dropdown-toggle ml-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" th:href="@{/profile}">Profile</a>
@@ -70,7 +71,8 @@
                 <div class="no"></div>
                 <div class="user-info col-11">
                     <div class="container col-lg-3 col-md-5 col-sm-10 col-12 mr-0 ml-0 px-0">
-                        <img id="avatar-img" class="details-user-ava mt-4" alt="" :src="'data:image/jpeg;base64,'+frava64" />
+                        <!-- <img id="avatar-img" class="details-user-ava mt-4" alt="" :src="'data:image/jpeg;base64,'+frava64" /> -->
+                        <img id="avatar-img" class="details-user-ava mt-4" alt="" th:src="@{../users/img/avatar.jpg}" />
                         <div class="more-info-sm text-left pl-1 mt-2">
                             <p class="text">Age: {{ friend.age }} </p>
                             <p class="text">Gender: {{ friend.gender }} </p>

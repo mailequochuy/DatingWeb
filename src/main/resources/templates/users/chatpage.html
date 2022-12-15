@@ -39,7 +39,8 @@
                                         <h6 class="text mb-0 pl-2">Like you</h6>
                                         <div v-for="(like, index) in listLikeYou" :key="like.id" v-if="index == 0" class="row">
                                             <div class="like-imgava">
-                                                <img class="like-user-ava-sm ml-3 mb-2" alt="" :src="'data:image/jpeg;base64,'+like.avatar">
+                                                <!-- <img class="like-user-ava-sm ml-3 mb-2" alt="" :src="'data:image/jpeg;base64,'+like.avatar"> -->
+                                                <img class="like-user-ava-sm ml-3 mb-2" alt="" th:src="@{users/img/avatar.jpg}">
                                             </div>
                                                 <div class="ml-1 text-left">
                                                     <h6 class="text friend-name-sm pl-2"> {{ like.userName }} </h6>
@@ -92,7 +93,8 @@
                                     <div th:if="${listLikeYou}" class="text-center">
                                         <div v-for="(like, index) in listLikeYou" :key="like.id" v-if="index == 0" class="row">
                                             <div class="like-imgava">
-                                                <img class="like-user-ava ml-3" alt="" :src="'data:image/jpeg;base64,'+like.avatar">
+                                                <img class="like-user-ava ml-3" alt="" th:src="@{users/img/avatar.jpg}">
+                                                <!-- <img class="like-user-ava ml-3" alt="" :src="'data:image/jpeg;base64,'+like.avatar"> -->
                                             </div>
                                                 <div class="ml-1 md-none text-left">
                                                     <h6 class="text pl-2"> {{ like.userName }} </h6>
@@ -109,10 +111,11 @@
                                     <section v-for="(friend, index) in listFriends" :key="friend.id" class="text-left shadow-5-strong justify-content-center border mb-1">
                                             <div v-on:click="showFriendMessage(index, friend)" :class="{'card-body py-2 px-sm-2 user-chatting pl-2 pr-0 ': index != indexcss , 'card-body py-2 px-sm-2 user-chatting-0' : index == indexcss} ">
                                                 <div class="imgava">
-                                                    <img class="user-ava" alt="" :src="'data:image/jpeg;base64,'+friend.avatar">
+                                                    <img class="user-ava" alt="" th:src="@{users/img/avatar.jpg}">
+                                                    <!-- <img class="user-ava" alt="" :src="'data:image/jpeg;base64,'+friend.avatar"> -->
                                                 </div>
                                                 <div class="ml-2">
-                                                    <h4 class="text friend-name"> {{ friend.userName }} </h4>
+                                                    <a :href="'/profile/' + friend.id" class="text friend-name"> <h4>{{ friend.userName }}</h4> </a>
                                                 <!--     <h6 class="text text-center lg-none">Lisa: I miss you -.- !!</h6>  -->
                                                 </div>
                                                 <div class="user-options md-none text">
@@ -135,7 +138,8 @@
                                         <div class="col-sm-12 h-100 px-0 hm-90">
                                             <div class="header-chat row">
                                                 <div class="col-6 ava-name-user">
-                                                    <img class="in-chat-ava" alt="" :src="'data:image/jpeg;base64,'+userFriend.avatar">
+                                                    <!-- <img class="in-chat-ava" alt="" :src="'data:image/jpeg;base64,'+userFriend.avatar"> -->
+                                                    <img class="in-chat-ava" alt="" th:src="@{users/img/avatar.jpg}">
                                                     <a class="name" :href="'/profile/' + userFriend.id"><h3 class="ml-3 mt-2 text">{{ userFriend.userName }}</h3></a>
                                                 </div>
                                                 <div class="col-6 option-open-ops text-right">
@@ -153,8 +157,10 @@
                                                             <p class="mess ml-3 mt-2 text mr-3 text-right"> {{ mess.message }} </p>
                                                         </div>
                                                         <div v-if="mess.friend_id == user.id" class="sub-div mt-1 text-left text-message">
-                                                            <img class="friend-message-ava mt-2" alt=""
-                                                                :src="'data:image/jpeg;base64,'+userFriend.avatar">
+                                                            <!-- <img class="friend-message-ava mt-2" alt=""
+                                                                :src="'data:image/jpeg;base64,'+userFriend.avatar"> -->
+                                                                <img class="friend-message-ava mt-2" alt=""
+                                                                th:src="@{users/img/avatar.jpg}">
                                                                 <div class="friend-message text-left">
                                                                     <p class="mess ml-3 mt-2 text">{{ mess.message }}</p>
                                                                 </div>
