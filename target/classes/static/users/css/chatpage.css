@@ -343,7 +343,7 @@ color: #888DF2;
     height: 80%;
 }
 .h-15{
-	height: 15%;
+	height: auto;
 }
 
 @media only screen and (max-width: 1350px) {
@@ -390,7 +390,7 @@ color: #888DF2;
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .side-bar{
         display: none;
     }.list-friend-sm{
@@ -408,7 +408,7 @@ color: #888DF2;
         height: 660px !important;
     }
     .chatting-message{
-        height: 440px !important;
+        height: 100% !important;
     }
     .more-info-div{
         height: 620px !important;
@@ -435,7 +435,10 @@ color: #888DF2;
         font-size: 14px;
     }.ava-name-user{
         padding: 0px;
-    }
+    }.h-100{
+		    height: 98%!important;
+	}
+    
 }
 
 @media only screen and (max-width: 576px) {
@@ -476,7 +479,7 @@ color: #888DF2;
         height: 740px;
     }
     .chatting-message{
-        height: 500px;
+    height: 100%;
     }
     .more-info-div{
         height: 680px;
@@ -488,7 +491,16 @@ color: #888DF2;
     }.hm-80{
         height: 80% !important;
     }.hm-90{
-        height: 90% !important;
+        height: 95% !important;
     }
 }
-
+@media only screen and (max-width: 380px) {
+	.h-100 {
+    height: 97%!important;
+	}
+}
+@media only screen and (max-width: 281px) {
+	.h-100 {
+    height: 97%!important;
+	}
+}
