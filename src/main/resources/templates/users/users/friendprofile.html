@@ -132,7 +132,9 @@
                     <div class="actions text-left ml-0" >
                         <h4 class="text">Actions</h4>
                         <hr>
-                        <a class="btn btn-delete text-white" @click="unFriend(friend.id)">Unfriend</a>
+                        <a v-if="user.role_id == 2" class="btn btn-delete text-white" @click="unFriend(friend.id)">Unfriend</a>
+                        <a v-if="user.role_id == 1 && friend.is_blocked == 0" class="btn btn-delete text-white" @click="block">Block User</a>
+                        <a v-if="user.role_id == 1 && friend.is_blocked == 1" class="btn btn-primary text-white" @click="unlock">Unlock User</a>
                     </div>
                 </div>
                 <div class="no"></div>
@@ -149,8 +151,92 @@
                 </div>
             </div>
         </div>
-    </div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modalBlock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        Are you sure to block {{ friend.userName }} ?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+		        <button @click="blockUser(friend.id)" type="button" class="btn btn-delete text-white" data-dismiss="modal">Yes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="modalUnlock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        Unlock {{ friend.userName }} ?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+		        <button @click="blockUser(friend.id)" type="button" class="btn btn-primary text-white" data-dismiss="modal">Yes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		
+		
     
+		<!-- Modal  Confirm-->
+		<div class="modal fade" id="modalBlockUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        Success Block User!
+		      </div>
+		      <div class="modal-footer">
+		        <button @click="close" type="button" class="btn btn-secondary">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="modalUnlockUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        Success Unlock User!
+		      </div>
+		      <div class="modal-footer">
+		        <button @click="close" type="button" class="btn btn-secondary">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+    
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" th:src="@{../users/js/user/friendprofile.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>

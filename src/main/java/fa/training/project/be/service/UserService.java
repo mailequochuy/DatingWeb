@@ -78,5 +78,12 @@ public interface UserService {
      * @return
      */
     public User activeUser(User user);
+    
+    /**
+     * Function: active or block user
+     * @param user
+     * @return
+     */
+    public User blockUser(User user);
      
 }

@@ -190,5 +190,15 @@ public class UserController {
     }
     
     
+    @PostMapping("blockUser")
+    public @ResponseBody boolean blockUser(HttpSession session, @RequestBody User user) {
+        User userSession =  (User) session.getAttribute("user");
+        if(userSession == null) {
+            return false;
+        }else {
+        	this.userService.blockUser(user);
+            return true;
+        }
+    }
     
 }
