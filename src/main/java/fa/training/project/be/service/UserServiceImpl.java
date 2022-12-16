@@ -145,4 +145,21 @@ public class UserServiceImpl implements UserService{
         this.userRepository.save(user);
         return user;
     }
+    
+    /**
+     * Function: active or inactive user
+     * @param user
+     * @return
+     */
+    @Override
+    public User blockUser(User user) {
+        // TODO Auto-generated method stub
+        if(user.isIs_blocked() == true) {
+            user.setIs_blocked(false);
+        }else {
+            user.setIs_blocked(true);
+        }
+        this.userRepository.save(user);
+        return user;
+    }
 }

@@ -237,10 +237,11 @@ span.multiselect__tag{
 }
 
 .finding-files{
-    height: 350px;
+    height: 250px;
+    width: 800px;
     display: flex;
-    overflow: scroll;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .ava-user-finding{
@@ -271,9 +272,9 @@ span.multiselect__tag{
 }
 
 .notification-nolist{
-    color: white;
+    color: #6600FF;
     font-family: Bradley Hand, cursive;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .error-input{
@@ -347,8 +348,8 @@ p.text{
 }
 
 .user-chatting-files{
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     margin: 5px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -441,7 +442,7 @@ p{
     }
     .finding-files-576{
         display: flex;
-        overflow: scroll;
+        overflow-x: scroll;
         overflow-y: hidden;
     }
 }
@@ -484,7 +485,7 @@ p{
         height: 720px;
     }
     .finding-users{
-        margin-top: 100px;
+        margin-top: 50px;
     }
 }
 

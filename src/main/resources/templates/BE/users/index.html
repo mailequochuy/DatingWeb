@@ -115,28 +115,58 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<th class="text-midle" scope="row">1</th>
-												<td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava7.jpg}" /> </a> </td>
-												<td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > User001 </a> </td>
-												<td class="text-midle">user001@gmail.com</td>
-												<td class="text-midle">0123456789</td>
-												<td>
-													<a class="btn btn-edit text-white" th:href="@{/management/users/edit}">Edit</a>
-													<a class="btn btn-delete text-white" href="#">Delete</a>
-												</td>
-											</tr>
-											<tr>
-												<th class="text-midle" scope="row">2</th>
-												<td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava5.jpg}" /> </a></td>
-												<td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > User002 </a></td>
-												<td class="text-midle">user002@gmail.com</td>
-												<td class="text-midle">0123456789</td>
-												<td>
-													<a class="btn btn-edit text-white text-midle" th:href="@{/management/userss/edit}">Edit</a>
-													<a class="btn btn-delete text-white text-midle" href="#">Delete</a>
-												</td>
-											</tr>
+                                            <tr>
+                                                <th class="text-midle" scope="row">1</th>
+                                                <td> <a class="text-logo atag" :href="'/profile/' + 2" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava7.jpg}" /> </a> </td>
+                                                <td class="text-midle"> <a class="text-logo atag" :href="'/profile/' + 2" > LaLisa </a> </td>
+                                                <td class="text-midle">lisa@gmail.com</td>
+                                                <td class="text-midle">0123456789</td>
+                                                <td>
+                                                    <a class="btn btn-edit text-white" th:href="@{/management/users/edit}">Edit</a>
+                                                    <a class="btn btn-delete text-white" href="#">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-midle" scope="row">2</th>
+                                                <td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava5.jpg}" /> </a></td>
+                                                <td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > Jennie </a></td>
+                                                <td class="text-midle">jennie2@gmail.com</td>
+                                                <td class="text-midle">0123456789</td>
+                                                <td>
+                                                    <a class="btn btn-edit text-white text-midle" th:href="@{/management/userss/edit}">Edit</a>
+                                                    <a class="btn btn-delete text-white text-midle" href="#">Delete</a>
+                                                </td>
+                                            </tr>
+                                                <th class="text-midle" scope="row">3</th>
+                                                <td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava4.jpg}" /> </a></td>
+                                                <td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > RoseFL </a></td>
+                                                <td class="text-midle">rose@gmail.com</td>
+                                                <td class="text-midle">0123456789</td>
+                                                <td>
+                                                    <a class="btn btn-edit text-white text-midle" th:href="@{/management/userss/edit}">Edit</a>
+                                                    <a class="btn btn-delete text-white text-midle" href="#">Delete</a>
+                                                </td>
+                                            </tr>
+                                                <th class="text-midle" scope="row">4</th>
+                                                <td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../FE/img/ava7.jpg}" /> </a></td>
+                                                <td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > JisooA </a></td>
+                                                <td class="text-midle">Jisoo@gmail.com</td>
+                                                <td class="text-midle">0123456789</td>
+                                                <td>
+                                                    <a class="btn btn-edit text-white text-midle" th:href="@{/management/userss/edit}">Edit</a>
+                                                    <a class="btn btn-delete text-white text-midle" href="#">Delete</a>
+                                                </td>
+                                            </tr>
+                                                <th class="text-midle" scope="row">5</th>
+                                                <td> <a class="text-logo atag" th:href="@{/management/users/details}" > <img class="list-user-ava" alt="" th:src="@{../users/img/avatar.jpg}" /> </a></td>
+                                                <td class="text-midle"> <a class="text-logo atag" th:href="@{/management/users/details}" > mailequochuy </a></td>
+                                                <td class="text-midle">mailequochuy@gmail.com</td>
+                                                <td class="text-midle">0123456789</td>
+                                                <td>
+                                                    <a class="btn btn-edit text-white text-midle" th:href="@{/management/userss/edit}">Edit</a>
+                                                    <a class="btn btn-delete text-white text-midle" href="#">Delete</a>
+                                                </td>
+                                            </tr>
 										</tbody>
 									</table>
 								</div>

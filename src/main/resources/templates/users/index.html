@@ -23,16 +23,15 @@
     
     <div th:replace="users/layouts/header :: header('index')"></div>
     
-    <div class="h-90 px-0 d-flex justify-content-center">
-        <section v-if="isShowFind" class="col-xl-4 col-lg-5 col-md-8 col-10 px-0 my-auto">
-            <div class="card shadow-5-strong py-2 px-2 h-75">
+    <div class="h-90 px-0 d-flex">
+        <section v-if="isShowFind" class="col-12 px-0 mt-3 ml-3 d-flex">
+            <div class="col-3 card shadow-5-strong py-2 px-2 h-100">
                     <section class="text-center">
                         <div class="card shadow-5-strong justify-content-center border mt-0">
                             <div class="card-body py-2 px-2">
                                 <div class="row d-flex justify-content-center">
                                     <div class="col-lg-10">
-                                        <h2 class="fw-bold mb-2 custom-text">Finding
-                                            ...</h2>
+                                        <h2 class="fw-bold mb-2 custom-text">Finding...</h2>
                                         <h6 v-if="selectedQuote" class="custom-text">{{ selectedQuote }}</h6>
                                     </div>
                                 </div>
@@ -81,39 +80,38 @@
                         </div>
                     </section>
             </div>
-        </section>
-        <div v-if="!isShowFind" class="col-sm-11 col-10 pl-0 pr-0">
-        
-            <div v-if="noList" class="notification-nolist col-md-12 text-center">
-                <h1>{{noListMess}}</h1>
-            </div>
-            
-                <div v-for="(u, index) in list" :key="u.id" v-if="index == selectedItem" class="card-body p-0 pr-0 text-center justify-content-center d-flex row h-100">
-                    <div class="bottom-home col-11 text-left finding-users pr-0 pl-0 my-auto">
-                        <button v-if="!isShowFind" @click="showFind" class="btn-show-finding mt-3 ml-3" title="Change your choices"><i class="fas fa-edit text fs-30"></i></button>
+            <div class="col-8 card shadow-5-strong py-2 px-2 h-100 ml-5">
+	            <div v-if="noList" class="notification-nolist col-md-12 text-center">
+	                <h1>{{noListMess}}</h1>
+	            </div>
+	            <div v-for="(u, index) in list" :key="u.id" v-if="index == selectedItem" class="card-body p-0 pr-0 text-center justify-content-center d-flex row h-100">
+                    <div class="bottom-home col-11 text-left finding-users pr-0 pl-0">
                             <div class="col-12 pr-0 pl-0 pt-1 avatar-finding-576">
                                 <div class="slider-container pt-0 mb-1 ml-1 justify-content-center d-flex">
                                     <img class="ava-user-finding" alt="" :src="'data:image/jpeg;base64,'+u.avatar">
                                 </div>
                             </div>
-                        <div class="col-sm-12 d-flex pl-0 pr-0">
-                            <div class="col-lg-3 col-md-4 col-sm-5 col-5 sub_images pl-0 pr-0 pt-3 ">
-                                <div class="slider-container pl-0 pr-0 pt-5 ml-3">
-                                    <img class="ava-user-finding" alt="" :src="'data:image/jpeg;base64,'+u.avatar">
-                                </div>
-                            </div>
-                            <div class="text-left col-lg-5 col-sm-4 col-11 user-infor">
-                                <div class="text-center">
-                                    <h1 class="text-name-user">{{ u.userName }}</h1>
-                                </div>
-                                <h5 class="text-user-info mb-4" >Age: {{ u.age }}</h5>
-                                <h5 class="text-user-info mb-4">Gender: {{ u.gender }}</h5>
-                                <h5 class="text-user-info mb-4">Hobby: {{ u.hobby }} Sing, Dance</h5>
-                                    <h5 class="text-user-info">Descriptions: </h5>
-                                    <p class="text-user-info">{{u.descriptions}}</p>
-                            </div>
-                            <div class="col-sm-4 text-left mt-5 descriptions pr-0 " >
-                                <div class="row finding-files col-12 mr-0 ml-0">
+                        <div class="col-sm-12 pl-0 pr-0">
+                        	<div class="row d-flex">
+	                            <div class="col-lg-3 col-md-4 col-sm-5 col-5 sub_images pl-0 pr-0 pt-3 ">
+	                                <div class="slider-container pl-0 pr-0 pt-5 ml-3">
+	                                    <!-- <img class="ava-user-finding ml-3" alt="" :src="'data:image/jpeg;base64,'+u.avatar"> -->
+                            			<img class="ava-user-finding ml-3" th:src="@{users/img/avatar.jpg}" /> 
+	                                </div>
+	                            </div>
+	                            <div class="text-left col-lg-5 col-sm-4 col-11 user-infor">
+	                                <div class="text-center">
+	                                    <h1 class="text-name-user">{{ u.userName }}</h1>
+	                                </div>
+	                                <h5 class="text-user-info mb-4" >Age: {{ u.age }}</h5>
+	                                <h5 class="text-user-info mb-4">Gender: {{ u.gender }}</h5>
+	                                <h5 class="text-user-info mb-4">Hobby: {{ u.hobby }} Sing, Dance</h5>
+	                                    <h5 class="text-user-info">Descriptions: </h5>
+	                                    <p class="text-user-info">{{u.descriptions}}</p>
+	                            </div>
+	                         </div>
+                            <div class="col-11 text-left mt-3 descriptions pr-0 mx-auto" >
+                                <div class="row finding-files col-12 mr-0 ml-0 d-flex">
                                     <img class="user-chatting-files mr-0" alt="" th:src="@{users/img/ava01.jfif}" /> 
                                     <img class="user-chatting-files mr-0" th:src="@{users/img/ava06.jfif}" /> 
                                     <img class="user-chatting-files mr-0" th:src="@{users/img/ava03.jpg}" />
@@ -146,6 +144,7 @@
                     </div>
                 </div>
             </div>
+        </section>
     </div>
     <div th:insert="users/layouts/footer :: footer"></div>
     </div>

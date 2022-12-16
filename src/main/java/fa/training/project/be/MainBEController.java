@@ -11,4 +11,8 @@ public class MainBEController {
 		return "BE/dashboard";
 	}
 	
+	@GetMapping("management/users")
+	public String manageUser() {
+		return "BE/users/index";
+	}
 }
