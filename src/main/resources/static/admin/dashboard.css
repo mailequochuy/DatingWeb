@@ -3,6 +3,7 @@
 .dashboard-text {
     color: #504883;
     font-family: Impact, fantasy;
+    font-size: 40px;
 }
 .table-text {
     color: #504883;
@@ -148,7 +149,7 @@
   top: 30%;
   left: 90%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  -ms-transform: translate(-dashboard-text%, -50%);
   background-color: red;
   color: white;
   font-size: 16px;

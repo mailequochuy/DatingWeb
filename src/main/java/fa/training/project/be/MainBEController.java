@@ -13,6 +13,7 @@ public class MainBEController {
 	
 	@GetMapping("management/users")
 	public String manageUser() {
+		System.out.println("1233123123");
 		return "BE/users/index";
 	}
 }
