@@ -179,4 +179,14 @@ public class AuthenticationController {
     	return "users/layouts/home";
     }
     
+    @GetMapping("call")
+    public String call(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }else {
+            model.addAttribute("user", user);
+            return "users/call";
+        }
+    }
 }

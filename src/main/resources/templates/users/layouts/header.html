@@ -27,6 +27,8 @@
                             <a th:unless="${active == 'chat' }" class="nav-link" th:href="@{/chats}"><p class="text">Chats</p></a>
                             <a th:if="${active == 'index' }" class="nav-link active_nav_item" th:href="@{/home}"><p class="text">Find Friends</p></a>
                             <a th:unless="${active == 'index' }" class="nav-link" th:href="@{/home}"><p class="text">Find Friends</p></a>
+                            <a th:if="${active == 'call' }" class="nav-link active_nav_item" th:href="@{/call}"><p class="text">Call</p></a>
+                            <a th:unless="${active == 'call' }" class="nav-link" th:href="@{/call}"><p class="text">Call</p></a>
                     </div>
                     <div class="mb-2 mt-2 row ml-2 nav-sm">
                             <a th:if="${active == 'chat' }" class="nav-link active_nav_item" th:href="@{/chats}" title="Chatting"><i class="fas fa-comment-dots text"></i></a>
