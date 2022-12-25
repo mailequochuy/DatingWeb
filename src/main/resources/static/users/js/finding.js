@@ -33,8 +33,10 @@ var app = new Vue(
                 ava64: this.userss.avatar,
                 error: '',
                 isShowFind: true,
+                user: ''
         },
         mounted() {
+        	this.user = user;
             this.userss = userss;
         },
           computed: {
