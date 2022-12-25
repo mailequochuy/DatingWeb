@@ -15,7 +15,7 @@ class API {
       `${BASE_URL}/create`,
       {
         name: roomName,
-        uniqueName: roomName
+        uniqueName: roomName,
       },
       {
         headers: this._authHeader()
